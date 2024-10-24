@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單的 Vue 3 下拉選單</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>選擇一個選項</h1>
+        <select v-model="selectedOption">
+            <option disabled value="">請選擇</option>
+            <option v-for="option in options" :key="option.value" :value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+
+        <div class="content">
+            <h2>你選擇的選項是：{{ selectedOptionText }}</h2>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        createApp({
+            setup() {
+                const selectedOption = ref('');
+                const options = [
+                    { value: 'option1', text: '選項一' },
+                    { value: 'option2', text: '選項二' },
+                    { value: 'option3', text: '選項三' }
+                ];
+
+                const selectedOptionText = computed(() => {
+                    const option = options.find(opt => opt.value === selectedOption.value);
+                    return option ? option.text : '無';
+                });
+
+                return { selectedOption, options, selectedOptionText };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
