@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 和 Element Plus 下拉選單</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-select v-model="selectedOption" placeholder="請選擇">
+            <el-option
+                v-for="option in options"
+                :key="option.value"
+                :label="option.text"
+                :value="option.value">
+            </el-option>
+        </el-select>
+
+        <div class="content" style="margin-top: 20px;">
+            <h2>你選擇的選項是：{{ selectedOptionText }}</h2>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        createApp({
+            setup() {
+                const selectedOption = ref('');
+                const options = [
+                    { value: 'option1', text: '選項一' },
+                    { value: 'option2', text: '選項二' },
+                    { value: 'option3', text: '選項三' }
+                ];
+
+                const selectedOptionText = computed(() => {
+                    const option = options.find(opt => opt.value === selectedOption.value);
+                    return option ? option.text : '無';
+                });
+
+                return { selectedOption, options, selectedOptionText };
+            }
+        }).use(ElementPlus).mount('#app');
+    </script>
+</body>
+</html>
