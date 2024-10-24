@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單的 Vue 應用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <input v-model="message" placeholder="輸入內容" />
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '你好，世界！'
+            }
+        });
+    </script>
+</body>
+</html>
