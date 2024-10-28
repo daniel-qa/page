@@ -1,41 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Element Plus 引入 Lanuage 示例</title>
-    <script src="https://unpkg.com/vue@3.2.0/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
-    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
-    <script src="https://unpkg.com/element-plus/dist/locale/zh-cn.mjs"></script>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Element UI Button Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  </head>
+  <body>
     <div id="app">
-        <el-button type="primary"> 我的 el-button 按钮</el-button>
+      <el-button type="primary" @click="handleClick">點擊我</el-button>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script>
-        const { createApp } = Vue;
-        const { ElButton } = ElementPlus;
-        const { zhCn } = ElementPlus; // 导入中文语言包
-
-        const app = createApp({
-            components: {
-                ElButton
-            }
-        });
-
-        app.use(ElementPlus, { locale: zhCn }); // 使用 Element Plus 并设置语言
-        app.mount('#app');
+      new Vue({
+        el: '#app',
+           
+		methods: {
+				  handleClick() {
+					alert('你點擊了按鈕！');
+				  }
+				}
+			  })
     </script>
-</body>
+  </body>
 </html>
-
-
- <!-- 
-在这个示例中，我们：
-
-从 Element Plus 中导入了 zhCn 语言包。
-使用 app.use(ElementPlus, { locale: zhCn }) 将 Element Plus 和中文语言包应用到 Vue 实例中。
-这样，你就可以在应用中使用 Element Plus 组件，并且界面会显示为中文。
--->
