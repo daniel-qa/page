@@ -1,45 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue 3  Element Plus Template</title>
-    <!-- 引入 Vue 3 -->
-    <script src="https://unpkg.com/vue@3.2.0/dist/vue.global.js"></script>
-    <!-- 引入 Element Plus -->
-    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
-    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
-</head>
-<body>
-    <div id="app">
-        <el-button type="primary">主要按钮</el-button>
-		
-		 <el-card class="box-card">
-			 <div v-for="o in 4" :key="o" class="text item">
-				 {{'列表内容 ' + o }}
-			 </div>
-		 </el-card>
-    </div>
-
-    <script>
-        const { createApp } = Vue;
-        const { ElButton } = ElementPlus;
-        //const { ElButton, ElInput } = ElementPlus;   // ElButton，ElInput 是从 ElementPlus 中解构出来的
-        
-        createApp({
-            components: {
-                ElButton
-            }
-        }).mount('#app');
-    </script>
-	
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Element UI Button Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 	<style>
-	.box-card {
-		width: 50vh;
-		margin: 0 auto; /* 水平居中 */
-	}	
-	</style>
-	
-</body>
-</html>
+		.text {
+			font-size: 14px;
+		}
 
+		.item {
+			padding: 18px 0;
+		}
+
+		.box-card {
+			width: 480px;
+		}
+	</style>
+  </head>
+  <body>
+    <div id="app">
+      
+	  <el-button type="primary" @click="handleClick">點擊我</el-button>
+	  
+	  <el-card>
+	  <!-- 空内容,當空白Block使用 -->
+	  </el-card>
+	  
+	  <el-card class="box-card">
+	    <div v-for="o in 4" :key="o" class="text item">
+	 	 {{'列表内容 ' + o }}
+	    </div>
+	  </el-card>
+	
+    </div>
+	
+    <script>
+      new Vue({
+        el: '#app',
+           
+		methods: {
+				  handleClick() {
+					alert('你點擊了按鈕！');
+				  }
+				}
+			  })
+    </script>	
+  </body>
+</html>
