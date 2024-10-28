@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 和 Element Plus 示例</title>
+    <script src="https://unpkg.com/vue@3.2.0/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+    <script src="https://unpkg.com/element-plus/dist/locale/zh-cn.mjs"></script>
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary">主要按钮</el-button>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        const { ElButton } = ElementPlus;
+        const { zhCn } = ElementPlus; // 导入中文语言包
+
+        const app = createApp({
+            components: {
+                ElButton
+            }
+        });
+
+        app.use(ElementPlus, { locale: zhCn }); // 使用 Element Plus 并设置语言
+        app.mount('#app');
+    </script>
+</body>
+</html>
