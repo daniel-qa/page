@@ -1,0 +1,31 @@
+```
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 和 Element Plus 示例</title>
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3.2.0/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary">主要按钮</el-button>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        const { ElButton } = ElementPlus;
+
+        createApp({
+            components: {
+                ElButton
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
+```
