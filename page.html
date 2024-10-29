@@ -33,6 +33,14 @@
             background-color: #ffffff; /* 面板背景颜色 */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
 		}
+		.container {		
+		  height: 50px;
+		}
+		.fixed-button {
+		  position: absolute; /* 绝对定位 */
+		  bottom: 25vh; /* 離底部 20px */
+		  right: 50vh; /* 離右邊 20px */
+		}
 		
 	</style>	
 </head>
@@ -62,10 +70,16 @@
                 <el-radio label="single">個別挑選</el-radio>
                 <el-radio label="batch">批量挑選</el-radio>
             </el-radio-group>            
-        </el-card>
+		  </el-card>
 		
-    </div>
+		</div>
 
+	    <div class="container">
+            <el-button type="primary" class="fixed-button" @click="nextStep">下一步</el-button>
+			
+        </div>
+
+  	</div>
     <script>
         const { createApp } = Vue;
         
@@ -79,6 +93,9 @@
             methods: {
                 handleClick() {
                     alert('你點擊了按鈕！');
+                },
+				nextStep() {
+                    alert('下一步！');
                 }
             }
         }).use(ElementPlus).mount('#app');
@@ -88,3 +105,4 @@
 
 <!-- body-style 是 el-card 组件的一个属性，用于直接设置卡片内部的样式 -->
 <!-- <el-card class="panel" :body-style="{ padding: '120px' }"  -->
+<!-- position: absolute; 而不是 position: fixed;。这样，按钮会相对于其最近的定位祖先元素（通常是包含它的 div）进行定位 -->
