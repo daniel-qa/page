@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Plus Button Example</title>
+    <!-- 引入 Vue 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.js"></script>
+    
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+	<style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0; /*設定元素與其相鄰元素之間的空白距離。*/
+            background-color: #f5f5f5; /* 背景颜色 */
+        }		
+        .card {
+            margin-bottom: 20px; /* 卡片间距 */
+			margin: 20px auto;  /* 上下边距为 20px，左右居中 */
+        }
+        .panel {
+            width: 800px;
+            padding: 20px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px; /* 邊框圓角 */
+            background-color: #ffffff; /* 面板背景颜色 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+		}
+		
+	</style>	
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary" @click="handleClick">點擊我</el-button>
+        
+		
+		<div class="panel">
+		
+          <el-card class="card" :body-style="{ padding: '50px' }">
+		  	<div slot="header">
+                  <span>選擇發送類型</span>
+              </div>		
+              <el-radio-group v-model="sendType">
+                  <el-radio label="push">端外通知</el-radio>
+                  <el-radio label="email">Email</el-radio>
+                  <el-radio label="message">簡訊</el-radio>
+              </el-radio-group>            
+          </el-card>
+		  
+		  <el-card class="card" :body-style="{ padding: '50px' }">
+			<div slot="header">
+                <span>選擇名單挑選方式</span>
+            </div>		
+            <el-radio-group v-model="selectType">
+                <el-radio label="single">個別挑選</el-radio>
+                <el-radio label="batch">批量挑選</el-radio>
+            </el-radio-group>            
+        </el-card>
+		
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    sendType: 'push', // 默認選擇
+                    selectType: 'single' // 默認選擇
+                };
+            },
+            methods: {
+                handleClick() {
+                    alert('你點擊了按鈕！');
+                }
+            }
+        }).use(ElementPlus).mount('#app');
+    </script>
+</body>
+</html>
+
+<!-- body-style 是 el-card 组件的一个属性，用于直接设置卡片内部的样式 -->
+<!-- <el-card class="panel" :body-style="{ padding: '120px' }"  -->
