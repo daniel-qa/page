@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Menu Bar Example</title>
+    <script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4.1.6/dist/vue-router.global.js"></script>
+    <style>
+        .layout {
+            display: flex;
+        }
+        .menu-bar {
+            width: 200px;
+            background-color: #f0f0f0;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        nav a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const { createApp } = Vue;
+        const { createRouter, createWebHistory } = VueRouter;
+
+        const Home = { template: '<div>首页内容</div>' };
+        const About = { template: '<div>关于内容</div>' };
+
+        const MenuBar = {
+            template: `
+                <nav>
+                    <router-link to="/home">首页</router-link>
+                    <router-link to="/about">关于</router-link>
+                </nav>
+            `
+        };
+
+        const Layout = {
+            template: `
+                <div class="layout">
+                    <aside class="menu-bar">
+                        <MenuBar />
+                    </aside>
+                    <main class="main-content">
+                        <router-view />
+                    </main>
+                </div>
+            `,
+            components: { MenuBar }
+        };
+
+        const routes = [
+            { path: '/home', component: Home },
+            { path: '/about', component: About }
+        ];
+
+        const router = createRouter({
+            history: createWebHistory(),
+            routes,
+        });
+
+        const app = createApp(Layout);
+        app.use(router);
+        app.mount('#app');
+    </script>
+</body>
+</html>
