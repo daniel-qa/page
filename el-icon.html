@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Element UI Button Example</title>
+      
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+      
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+      
+    <style>
+      .text {
+        font-size: 14px;
+      }
+
+      .item {
+        padding: 18px 0;
+      }
+
+      .box-card {
+        width: 480px;
+        margin: 20px auto;  /* 上下边距为 20px，左右居中 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      
+      <el-button type="primary" icon="el-icon-edit" @click="handleClick">点击我</el-button>
+      
+      <el-card>
+        <!-- 空内容,當空白Block使用 -->
+      </el-card>
+      
+      <el-card class="box-card">
+        <div v-for="o in 4" :key="o" class="text item">
+          {{'列表内容 ' + o }}
+        </div>
+      </el-card>
+    
+    </div>
+    
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          handleClick() {
+            alert('你点击了按钮！');
+          }
+        }
+      })
+    </script>  
+  </body>
+</html>
